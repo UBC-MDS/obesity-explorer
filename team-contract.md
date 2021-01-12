@@ -9,17 +9,17 @@ As well as agreeing to the UBC MDS policies outlined here: https://ubc-mds.githu
 * Dustin Burnham
 * Rafael Pilliard Hellwig
 
-# Distribution of Work
+## Distribution of Work
 
-Work will be distributed in an fair and equitable manner by discussing allocation in the beginning of the week and priortizing work completion based on timelines and whether other work can only be initiated following its completion. Work will be assigned in advance but if there is work that requires more effort, than the team member can ask for support from other team members. Github kanban projects will be used to keep track of the progress of projects. 
+Work will be distributed in an fair and equitable manner by discussing allocation in the beginning of the week and priortizing work completion based on timelines and whether other work can only be initiated following its completion. Work will be assigned in advance but if there is work that requires more effort, than the team member can ask for support from other team members. Github kanban projects will be used to keep track of the progress of tasks.
 
-# Time Invested and Schedule
+## Time Invested and Schedule
 
 The expected hours of work will be dependent on the team member per their schedule. Standard meetings are set for Mondays, Wednesdays and Fridays but may be subject to change depending on the availability of the team members. Online communication will be through Slack, Github issues and email. The team  has decided that Sundays are off limits.
 
-# Rotating Responsibilities 
+## Rotating Responsibilities 
 
-Meeting minutes will be completed by a different team member each week. Please see the schedule below.
+Meeting minutes will be completed by a different team member each week and posted on the relevant Github issue. Please see the schedule below.
 | Week  | Name      |
 |-------|-----------|
 | 1     | Javairia  |
@@ -27,6 +27,10 @@ Meeting minutes will be completed by a different team member each week. Please s
 | 3     | Dustin    |
 | 4     | Raf       |
 
-# Expectations 
+## Expectations 
 
-The team will treat one another with respect and be open to other people's opinions and feedback. Each team member is expected to communicate in advance if there are any issues or concerns with their assigned tasks prior to the deadline. It is much better to share less polished work earlier than to wait later. The team will do their best to produce the highest quality work possible within the time limit.
+The team will treat one another with respect and be open to other people's opinions and feedback. Additionally, each team member is expected to communicate in advance if there are any issues or concerns with their assigned tasks prior to the deadline. It is much better to share less polished work earlier than to wait later. The team will do their best to produce the highest quality work possible within the time limit. 
+
+## Dealing With Conflict 
+
+Any conflict will be dealt with through open and honest communication. A democracy style conflict management system will be used to make major decisions for this project. Constructive critcism with alternatives may be provided to any team member. If there are serious concerns, the issue may be escalated to the teaching staff. 
