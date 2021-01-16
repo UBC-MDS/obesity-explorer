@@ -1,7 +1,12 @@
 # Teamwork Contract For MDS 532 - Group 1
 
 ## Description
+
 This document specifies guidelines agreed upon by members of Group 1 of the University of British Columbia Master of Data Science program to ensure an effective and efficient working environment for the DSCI 532 group project. As well as agreeing to the UBC MDS policies outlined here: https://ubc-mds.github.io/policies/ the contract details logistics on how our group will work together, resolve issues, and expectations for individual tasks and overall project, to ensure a high quality experience and final project. Members included are:
+
+This document specifies guidelines agreed upon by members of Group 1 of the University of British Columbia Master of Data Science program to ensure an effective and efficient working environment for the DSCI 532 group project.
+As well as agreeing to the UBC MDS policies outlined here: https://ubc-mds.github.io/policies/ the contract details logistics on how our group will work together, resolve issues, and expectations for individual tasks and overall project, to ensure a high quality experience and final project. Members included are:
+
 
 * Tanmay Sharma
 * Javairia Raza
@@ -31,6 +36,7 @@ Meeting minutes will be completed by a different team member each week and poste
 The team will treat one another with respect and be open to other people's opinions and feedback. Additionally, each team member is expected to communicate in advance if there are any issues or concerns with their assigned tasks prior to the deadline. It is much better to share less polished work earlier than to wait later. The team will do their best to produce the highest quality work possible within the time limit. 
 
 ## Dealing With Conflict 
+
 
 Any conflict will be dealt with through open and honest communication. A democracy style conflict management system will be used to make major decisions for this project. Constructive critcism with alternatives may be provided to any team member. If there are serious concerns, the issue may be escalated to the teaching staff.
 
