@@ -4,9 +4,9 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import altair as alt
-from vega_datasets import data
 import numpy as np
 import pandas as pd
+from helper import rate
 
 # disable Altair limits
 alt.data_transformers.disable_max_rows()
@@ -18,57 +18,95 @@ ob = pd.read_csv(file)
 # Instantiate the app
 app = dash.Dash(__name__)
 
-
-# Scatter plot
-def plot_altair(xmax=0):
-    ob_sub = ob.loc[ob["year"] == xmax, :]
-    rates = (
-        ob_sub.groupby(["region", "country"])["obese", "smoke", "pop"]
-        .sum()
-        .reset_index()
-    ).dropna()
-    rates["smoker_rate"] = rates["smoke"] / rates["pop"]
-    rates["obesity_rate"] = rates["obese"] / rates["pop"]
-    chart = (
-        alt.Chart(rates, title=f"Obesity vs. Smoking in {xmax}")
-        .mark_point()
-        .encode(
-            alt.X("smoker_rate", title="Smoking Rate"),
-            alt.Y("obesity_rate", title="Obesity Rate"),
-            alt.Color("region", title="Region"),
-            tooltip="country",
-        )
-        .interactive()
-    )
-    return chart.to_html()
-
-
 app.layout = html.Div(
     [
-        html.H1("Obesity Explorer"),
+        html.H1("Top Countries"),
         html.Iframe(
-            id="scatter",
-            srcDoc=plot_altair(),
-            style={"border-width": "0", "width": "100%", "height": "400px"},
+            id="bar",
+            style={"border-width": "0", "width": "100%", "height": "500px"},
         ),
-        html.H4("Select a year:"),
         dcc.Slider(
-            id="xslider",
-            min=2007,
-            max=2016,
+            id="input_year",
             value=2016,
+            min=1975,
+            max=2016,
+            step=5,
+            included=False,
+            marks={
+                i: "Label {}".format(i) if i == 1 else str(i) for i in range(1975, 2017)
+            },
+        ),
+        dcc.Checklist(
+            id="input_sex",
+            options=[{"label": sex, "value": sex} for sex in ["Male", "Female"]],
+            value=["Male", "Female"],
+            labelStyle={"display": "inline-block"},
+        ),
+        dcc.Dropdown(
+            id="input_region",
+            value=list(ob["region"].unique()),
+            multi=True,
+            options=[
+                {"label": region, "value": region}
+                for region in list(ob["region"].unique())
+            ],
+        ),
+        dcc.Dropdown(
+            id="input_highlight_country",
+            value="Canada",
+            multi=True,
+            searchable=True,
+            options=[
+                {"label": country, "value": country}
+                for country in list(ob["country"].unique())
+            ],
+        ),
+        dcc.RangeSlider(
+            id="input_year_range",
+            value=[1975, 2016],
+            min=1975,
+            max=2016,
             step=1,
             marks={
-                i: "Label {}".format(i) if i == 1 else str(i) for i in range(2007, 2017)
+                i: "Label {}".format(i) if i == 1 else str(i)
+                for i in range(1975, 2017, 5)
             },
         ),
     ]
 )
 
 
-@app.callback(Output("scatter", "srcDoc"), Input("xslider", "value"))
-def update_output(xmax):
-    return plot_altair(xmax)
+# Bar plot
+@app.callback(Output("bar", "srcDoc"), Input("input_year", "value"))
+def plot_bar(year=0, n=20):
+    ob_yr = ob.loc[ob["year"] == year, :]
+    temp = ob_yr.groupby("country").sum("obese", "pop")
+    temp["ob_rate"] = temp["obese"] / temp["pop"]
+    ob_sorted = temp.sort_values("ob_rate", ascending=False).head(n).reset_index()
+    chart = (
+        alt.Chart(ob_sorted)
+        .mark_bar()
+        .encode(
+            x=alt.X("ob_rate", type="quantitative", title="Obesity Rate"),
+            y=alt.Y("country", sort="x", title="Country"),
+            color="ob_rate",
+            tooltip="ob_rate",
+        )
+        .interactive()
+    )
+    return chart.to_html()
+
+
+def plot_map():
+    pass
+
+
+def plot_time():
+    pass
+
+
+def plot_factor():
+    pass
 
 
 if __name__ == "__main__":

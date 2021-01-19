@@ -25,30 +25,21 @@ app.layout = html.Div(
             id="bar",
             style={"border-width": "0", "width": "100%", "height": "500px"},
         ),
-        dcc.Dropdown(
+        dcc.Slider(
             id="input_year",
             value=2016,
-            options=[
-                {"label": year, "value": year} for year in list(ob["year"].unique())
-            ],
+            min=1975,
+            max=2016,
+            step=5,
+            included=False,
+            marks={
+                i: "Label {}".format(i) if i == 1 else str(i) for i in range(1975, 2017)
+            },
         ),
-        # dcc.RadioItems(
-        #     id="input_sex",
-        #     value="Male",
-        #     options=[
-        #         {"label": sex ,"value": sex } for sex in list("Male", "Female"),
-        #     ],
-        # ),
-        dcc.RadioItems(
+        dcc.Checklist(
             id="input_sex",
-            options=[
-                # {"label": "New York", "value": "NYC"},
-                # {"label": "Montréal", "value": "MTL"},
-                # {"label": "San Francisco", "value": "SF"},
-                {"label": sex, "value": sex}
-                for sex in ["Male", "Female"]
-            ],
-            value="Male",
+            options=[{"label": sex, "value": sex} for sex in ["Male", "Female"]],
+            value=["Male", "Female"],
             labelStyle={"display": "inline-block"},
         ),
         dcc.Dropdown(
@@ -69,6 +60,17 @@ app.layout = html.Div(
                 {"label": country, "value": country}
                 for country in list(ob["country"].unique())
             ],
+        ),
+        dcc.RangeSlider(
+            id="input_year_range",
+            value=[1975, 2016],
+            min=1975,
+            max=2016,
+            step=1,
+            marks={
+                i: "Label {}".format(i) if i == 1 else str(i)
+                for i in range(1975, 2017, 5)
+            },
         ),
     ]
 )
