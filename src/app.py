@@ -21,11 +21,32 @@ app = dash.Dash(__name__)
 
 server = app.server
 
+
+def plot_bar(year=0, n=20):
+    ob_yr = ob.loc[ob["year"] == 2016, :]
+    temp = ob_yr.groupby("country").sum("obese", "pop")
+    temp["ob_rate"] = temp["obese"] / temp["pop"]
+    ob_sorted = temp.sort_values("ob_rate", ascending=False).head(n).reset_index()
+    chart = (
+        alt.Chart(ob_sorted)
+        .mark_bar()
+        .encode(
+            x=alt.X("ob_rate", type="quantitative", title="Obesity Rate"),
+            y=alt.Y("country", sort="x", title="Country"),
+            color="ob_rate",
+            tooltip="ob_rate",
+        )
+        .interactive()
+    )
+    return chart.to_html()
+
+
 app.layout = html.Div(
     [
         html.H1("Top Countries"),
         html.Iframe(
             id="bar",
+            srcDoc=plot_bar(),
             style={"border-width": "0", "width": "100%", "height": "500px"},
         ),
         dcc.Slider(
@@ -80,24 +101,24 @@ app.layout = html.Div(
 
 
 # Bar plot
-@app.callback(Output("bar", "srcDoc"), Input("input_year", "value"))
-def plot_bar(year=0, n=20):
-    ob_yr = ob.loc[ob["year"] == 2016, :]
-    temp = ob_yr.groupby("country").sum("obese", "pop")
-    temp["ob_rate"] = temp["obese"] / temp["pop"]
-    ob_sorted = temp.sort_values("ob_rate", ascending=False).head(n).reset_index()
-    chart = (
-        alt.Chart(ob_sorted)
-        .mark_bar()
-        .encode(
-            x=alt.X("ob_rate", type="quantitative", title="Obesity Rate"),
-            y=alt.Y("country", sort="x", title="Country"),
-            color="ob_rate",
-            tooltip="ob_rate",
-        )
-        .interactive()
-    )
-    return chart.to_html()
+# @app.callback(Output("bar", "srcDoc"), Input("input_year", "value"))
+# def plot_bar(year=0, n=20):
+#     ob_yr = ob.loc[ob["year"] == 2016, :]
+#     temp = ob_yr.groupby("country").sum("obese", "pop")
+#     temp["ob_rate"] = temp["obese"] / temp["pop"]
+#     ob_sorted = temp.sort_values("ob_rate", ascending=False).head(n).reset_index()
+#     chart = (
+#         alt.Chart(ob_sorted)
+#         .mark_bar()
+#         .encode(
+#             x=alt.X("ob_rate", type="quantitative", title="Obesity Rate"),
+#             y=alt.Y("country", sort="x", title="Country"),
+#             color="ob_rate",
+#             tooltip="ob_rate",
+#         )
+#         .interactive()
+#     )
+#     return chart.to_html()
 
 
 def plot_map():
