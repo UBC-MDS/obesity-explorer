@@ -35,9 +35,9 @@ app.layout = html.Div(
             max=2016,
             step=5,
             included=False,
-            marks={
-                i: "Label {}".format(i) if i == 1 else str(i) for i in range(1975, 2017)
-            },
+            # marks={
+            # i: f"Label {str(i)}" for i in range(1975, 2017)
+            # },
         ),
         dcc.Checklist(
             id="input_sex",
