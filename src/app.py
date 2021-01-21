@@ -82,7 +82,7 @@ app.layout = html.Div(
 # Bar plot
 @app.callback(Output("bar", "srcDoc"), Input("input_year", "value"))
 def plot_bar(year=0, n=20):
-    ob_yr = ob.loc[ob["year"] == year, :]
+    ob_yr = ob.loc[ob["year"] == 2016, :]
     temp = ob_yr.groupby("country").sum("obese", "pop")
     temp["ob_rate"] = temp["obese"] / temp["pop"]
     ob_sorted = temp.sort_values("ob_rate", ascending=False).head(n).reset_index()
