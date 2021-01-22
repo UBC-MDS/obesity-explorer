@@ -272,7 +272,8 @@ combo &lt;- obesity %&gt;%
   full_join(wb_df, by = c(&quot;country&quot;, &quot;year&quot;, &quot;sex&quot;)) %&gt;%
   mutate(obese = rate_obesity * pop) %&gt;%
   drop_na(pop) %&gt;%
-  select(-rate_obesity)</code></pre>
+  select(-rate_obesity) %&gt;%
+  mutate(none = &quot;All&quot;)</code></pre>
 <pre class="r"><code># write to disk
 write_csv(combo, here::here(&quot;data&quot;, &quot;processed&quot;, &quot;obesity-combo.csv&quot;))</code></pre>
 <p>Finally, for convenience, let’s create a dataset containing the latest data:</p>
