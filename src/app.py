@@ -96,9 +96,9 @@ app.layout = html.Div(
 
 
 # Bar plot
-@app.callback(Output("bar", "srcDoc"), Input("input_year_range", "value"))
-def plot_bar(year=0, n=20):
-    q = gen_query_string(year=2016, sex="Both")
+@app.callback(Output("bar", "srcDoc"), Input("teststring", "children"))
+def plot_bar(q):
+    n = 20
     temp = he.make_rate_data(["country"], ["obese"], q)
     ob_sorted = temp.sort_values("obese", ascending=False).head(n).reset_index()
     chart = (
