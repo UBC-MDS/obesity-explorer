@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 import altair as alt
 import numpy as np
 import pandas as pd
-from src.helper import rate
+from helper import rate
 
 # disable Altair limits
 alt.data_transformers.disable_max_rows()
