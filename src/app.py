@@ -8,7 +8,6 @@ import numpy as np
 import pandas as pd
 import helper as he
 
-
 # disable Altair limits
 alt.data_transformers.disable_max_rows()
 
