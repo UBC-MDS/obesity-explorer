@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import helper as he
 
+
 # disable Altair limits
 alt.data_transformers.disable_max_rows()
 
@@ -116,6 +117,9 @@ def plot_bar(year=0, n=20):
         .interactive()
     )
     return chart.to_html()
+
+
+print(he.rate(pd.Series([1, 2]), pd.Series([1, 2])))
 
 
 def plot_map():
