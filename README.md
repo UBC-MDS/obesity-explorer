@@ -1,20 +1,31 @@
 # Obesity Explorer
 
-Group 1: Dustin Burnham, Javairia Raza, Rafael Pilliard Hellwig, Tanmay Sharma
+Authors: Dustin Burnham, Javairia Raza, Rafael Pilliard Hellwig, Tanmay Sharma
 
-# About
+## Using the Obesity Dashboard
 
-This project aims at building interactive dashboards in both Python and R
-using the Dash framework. We analyze global obesity trends and try to build
-visualizations that would help our target audience extract meaningful insights.
-Further details can be found in our [proposal document](https://github.com/UBC-MDS/obesity-explorer/blob/main/doc/proposal.md).
+Obesity has been an increasing medical concern across the world in the 21st century. 
+It is a medical precursor to diseases such as diabetes, heart diseases, high blood pressure and certain types of cancers. 
+In spite of this, most people know very little about this disease, and are unaware of the factors that increase its relative risk. 
+To increase awareness and deepen understanding, this [Obesity Dashboard](https://obesity-explorer.herokuapp.com/) allows users to explore obesity trends, probe associations with other variables and factors, and discover patterns related to this global epidemic.
 
-# Heroku link for the app
+[![Foo](doc/img/dashboard.gif)](https://obesity-explorer.herokuapp.com/)
 
-The dashboard app can be found at [Obesity Explorer](https://obesity-explorer.herokuapp.com/).
+## Contributing to the Dashboard
 
-# Description of your app & sketch
+We love contributions! If you wish to help with this project or find a bug, please first review our [contributing guidelines](CONTRIBUTING.md).
+Contributors are encouraged to clone the repository and [install the conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) from the project root:
 
-The app’s main purpose is to educate the target audience on what countries struggle the most with obesity.  The main source of interactivity is the control panel on the left side of the dashboard.  Here there will be options to select location (dropdown), desired health outcome feature (dropdown), range of years to be viewed (slider), and aggregation features like sex (dropdown).  To show a global picture, a world map that is colored by a user-selected feature (control panel) will give a global picture of health outcomes like obesity, smoking status, poverty, etc..  Selecting a location in the control panel will highlight the country in the map and in all other applicable plots.  Below that is a horizontal bar graph that will show and highlight the top set of countries that have the highest level of some feature, like obesity rate, and give the user a sense of where the afflicted areas are.  The panel to the left of the map will show a line plot of some desired feature over the selected years.  This plot will highlight the desired country while greying out the other countries, and will show how some feature is changing over time.  Finally, the bottom left will contain plots for the top 3 features that are associated with obesity.  The relationship to obesity will be displayed as scatter plots, line plots, etc. depending on what is appropriate.
+```bash
+conda env create -y -f obesity.yaml
+conda activate obesity
+```
 
-![](doc/img/dashboard.gif)
+The app can then be run locally from the project root via:
+
+```bash
+python src/app.py
+```
+
+The authors implement apps in both Python and R using the Dash framework. 
+Details of the author's vision can be found in the [proposal document](https://github.com/UBC-MDS/obesity-explorer/blob/main/doc/proposal.md).
